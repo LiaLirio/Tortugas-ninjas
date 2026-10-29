@@ -1,0 +1,199 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Equipo Caparazón</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<div class="wall" aria-hidden="true"></div>
+
+<!-- ============ MENÚ ============ -->
+<header class="topbar">
+  <div class="wrap topbar__in">
+    <button class="brand" data-nav="inicio" type="button" aria-label="Ir al inicio">
+      <span class="brand__shell" id="brandShell" aria-hidden="true"></span>
+      <span class="brand__name">Tortugas ninjas</span>
+    </button>
+
+    <nav id="menu" class="menu" aria-label="Secciones">
+      <button type="button" data-nav="inicio">Inicio</button>
+      <button type="button" data-nav="tortugas">Conocé a las tortugas</button>
+      <button type="button" data-nav="entrenamiento">Entrenamiento ninja</button>
+      <button type="button" data-nav="test">¿Qué tortuga sos?</button>
+    </nav>
+
+    <div class="topbar__tools">
+      <span class="belt" id="belt" title="Tus puntos de entrenamiento">
+        <span class="belt__dot" aria-hidden="true"></span>
+        <span id="beltName">Cinturón blanco</span> · <b id="beltPts">0</b> pts
+      </span>
+      <button type="button" class="btn btn--sm" id="qrOpen">QR</button>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu">
+        <span class="burger__bars" aria-hidden="true"></span>
+        <span class="sr">Menú</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap main">
+
+  <!-- ============ INICIO ============ -->
+  <section id="inicio" class="view hero" aria-labelledby="heroTitle">
+    <p class="eyebrow">Maratón de superhéroes · Stand del equipo</p>
+    <h1 id="heroTitle" class="logo">
+      <span class="logo__small">EQUIPO</span>
+      <span class="logo__big">CAPARAZÓN</span>
+    </h1>
+    <p class="graffiti">Cuatro tortugas. Un equipo. Cero miedo.</p>
+    <svg class="drips" viewBox="0 0 320 46" aria-hidden="true" preserveAspectRatio="none">
+      <g fill="#39ff14">
+        <rect x="24" y="0" width="8" height="30" rx="4"/><circle cx="28" cy="34" r="6"/>
+        <rect x="96" y="0" width="7" height="18" rx="3.5"/><circle cx="99.5" cy="22" r="5"/>
+        <rect x="170" y="0" width="9" height="38" rx="4.5"/><circle cx="174.5" cy="41" r="5"/>
+        <rect x="236" y="0" width="7" height="22" rx="3.5"/><circle cx="239.5" cy="26" r="5"/>
+        <rect x="296" y="0" width="8" height="32" rx="4"/><circle cx="300" cy="36" r="6"/>
+      </g>
+    </svg>
+
+    <div class="hero__badges" id="heroBadges" role="list"></div>
+
+    <div class="hero__cta">
+      <button type="button" class="btn" data-nav="tortugas">Conocé a las tortugas</button>
+      <button type="button" class="btn btn--orange" data-nav="entrenamiento">Entrená como ninja</button>
+      <button type="button" class="btn btn--violet" data-nav="test">¿Qué tortuga sos?</button>
+    </div>
+
+    <p class="factstrip"><b>¿Sabías qué?</b> Las Tortugas Ninja nacieron en 1984, en un cómic creado por Kevin Eastman y Peter Laird.</p>
+  </section>
+
+  <!-- ============ CONOCÉ A LAS TORTUGAS ============ -->
+  <section id="tortugas" class="view" hidden aria-labelledby="tTitle">
+    <header class="section-head">
+      <p class="eyebrow">Sección 1 · El equipo</p>
+      <h2 id="tTitle">Conocé a las tortugas</h2>
+      <p class="lead">Cuatro hermanas, cuatro colores, cuatro armas. Conocé la personalidad, las habilidades y los datos curiosos de cada una.</p>
+    </header>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <!-- ============ ENTRENAMIENTO NINJA ============ -->
+  <section id="entrenamiento" class="view" hidden aria-labelledby="eTitle">
+    <header class="section-head">
+      <p class="eyebrow">Sección 2 · Dojo</p>
+      <h2 id="eTitle">Entrenamiento ninja</h2>
+      <p class="lead">Cuatro pruebas para ganar puntos y subir de cinturón. Los puntos aparecen arriba, en el menú.</p>
+    </header>
+
+    <div class="games">
+      <!-- Juego 1: reflejos -->
+      <article class="panel" style="--c:var(--neon)">
+        <h3>Dojo de reflejos</h3>
+        <p>Tocá las estrellas (+1) y las pizzas (+3). Esquivá las bombas (−3). Tenés 20 segundos.</p>
+        <div class="hud">
+          <span>Puntos <b id="reflexScore">0</b></span>
+          <span>Tiempo <b id="reflexTime">20</b></span>
+          <span>Récord <b id="reflexBest">0</b></span>
+        </div>
+        <div class="arena" id="reflexArena">
+          <p class="arena__hint" id="reflexMsg">Apretá “Empezar” y atrapá todo lo que puedas.</p>
+        </div>
+        <button type="button" class="btn" id="reflexStart">Empezar</button>
+      </article>
+
+      <!-- Juego 2: memoria -->
+      <article class="panel" style="--c:var(--donnie)">
+        <h3>Memoria ninja</h3>
+        <p>Mirá la secuencia de colores y repetila en el mismo orden. Cada ronda suma un paso más.</p>
+        <div class="hud">
+          <span>Ronda <b id="memRound">0</b></span>
+          <span>Récord <b id="memBest">0</b></span>
+        </div>
+        <div class="pads" id="pads">
+          <button type="button" class="pad pad--leo" data-i="0" aria-label="Azul"></button>
+          <button type="button" class="pad pad--raph" data-i="1" aria-label="Rojo"></button>
+          <button type="button" class="pad pad--donnie" data-i="2" aria-label="Violeta"></button>
+          <button type="button" class="pad pad--mikey" data-i="3" aria-label="Naranja"></button>
+        </div>
+        <p class="status" id="memMsg" aria-live="polite">Apretá “Empezar” para ver la primera secuencia.</p>
+        <button type="button" class="btn btn--violet" id="memStart">Empezar</button>
+      </article>
+
+      <!-- Juego 3: acertijos -->
+      <article class="panel" style="--c:var(--mikey)">
+        <h3>Acertijos del maestro</h3>
+        <div class="hud">
+          <span>Acertijo <b id="rdNum">1</b>/<b id="rdTotal">8</b></span>
+          <span>Aciertos <b id="rdScore">0</b></span>
+        </div>
+        <form id="riddleForm" autocomplete="off">
+          <p class="riddle" id="riddleText"></p>
+          <label class="sr" for="riddleInput">Tu respuesta</label>
+          <input id="riddleInput" type="text" placeholder="Escribí tu respuesta" maxlength="40">
+          <div class="row">
+            <button type="submit" class="btn btn--orange">Responder</button>
+            <button type="button" class="btn btn--ghost" id="riddleHint">Pista</button>
+            <button type="button" class="btn btn--ghost" id="riddleSkip">Saltar</button>
+          </div>
+        </form>
+        <p class="status" id="riddleFb" aria-live="polite"></p>
+      </article>
+
+      <!-- Juego 4: ruleta de desafíos -->
+      <article class="panel" style="--c:var(--leo)">
+        <h3>Ruleta de desafíos</h3>
+        <p>Girá la ruleta y cumplí el desafío con las tortugas del stand.</p>
+        <div class="wheelbox">
+          <div class="wheel" id="wheel" aria-hidden="true"></div>
+          <span class="wheel__pin" aria-hidden="true"></span>
+        </div>
+        <button type="button" class="btn btn--blue" id="wheelSpin">Girar</button>
+        <div class="challenge" id="challenge" hidden>
+          <p class="challenge__text" id="chText"></p>
+          <p class="challenge__timer" id="chTimer" hidden>0</p>
+          <div class="row">
+            <button type="button" class="btn btn--ghost" id="chStart" hidden>Empezar cuenta</button>
+            <button type="button" class="btn btn--blue" id="chDone">¡Lo hicimos!</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ ¿QUÉ TORTUGA SOS? ============ -->
+  <section id="test" class="view" hidden aria-labelledby="qTitle">
+    <header class="section-head">
+      <p class="eyebrow">Sección 3 · Test</p>
+      <h2 id="qTitle">¿Qué tortuga sos?</h2>
+      <p class="lead">Ocho preguntas rápidas. Elegí la respuesta que más se parezca a vos.</p>
+    </header>
+    <div class="quiz panel" id="quiz" aria-live="polite" style="--c:var(--neon)"></div>
+  </section>
+</main>
+
+<footer class="wrap footer">
+  <p>Tortugas Ninja</p>
+</footer>
+
+<!-- ============ QR ============ -->
+<div class="modal" id="qrModal" hidden role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="modal__box">
+    <button type="button" class="modal__close" id="qrClose" aria-label="Cerrar">&times;</button>
+    <h2 id="qrTitle">Escaneá y entrá a la web</h2>
+    <div class="qr" id="qrCode"></div>
+    <label class="field" for="qrUrl">Link de la web
+      <input id="qrUrl" type="url" inputmode="url" placeholder="https://...">
+    </label>
+    <div class="row">
+      <button type="button" class="btn" id="qrUpdate">Actualizar QR</button>
+      <button type="button" class="btn btn--ghost" id="qrCopy">Copiar link</button>
+    </div>
+    <p class="hint" id="qrHint">Pegá el link final de la página y apretá “Actualizar QR”. Para el stand, dejá esta pantalla abierta o sacale una captura para imprimirla.</p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<noscript><p style="padding:2rem;text-align:center">Esta página necesita JavaScript para funcionar.</p></noscript>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+
+</body></html>
